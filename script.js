@@ -120,42 +120,32 @@ let current_favicon = document.getElementById("favicon-link");
 let current_theme = document.getElementById("theme-link");
 let toggle_button = document.getElementById("theme-change-button");
 
-//use sessionStorage to set favicon and theme
-if (current_favicon.getAttribute("href") == "#") //favicon in html not set
+if (typeof(sessionStorage["favicon"]) != 'undefined')
 {
-	//check if sessionStorage has favicon
-	if (typeof(sessionStorage["favicon"]) != 'undefined')
-	{
-		console.log("GOT favicon in sessionStorage");
-		console.log(sessionStorage["favicon"]);
-	}
-	
-	else
-	{
-		console.log("NO favicon in sessionStorage");
-		sessionStorage["favicon"] = "favicon-dark.ico";
-	}
-	
-	current_favicon.href = sessionStorage["favicon"];
+	console.log("GOT favicon in sessionStorage");
+	console.log(sessionStorage["favicon"]);
 }
 
-if (current_theme.getAttribute("href") == "#") //theme in html not set
+else
 {
-	//check if sessionStorage has theme
-	if (typeof(sessionStorage["theme"]) != 'undefined')
-	{
-		console.log("GOT theme in sessionStorage");
-		console.log(sessionStorage["theme"]);
-	}
-	
-	else
-	{
-		console.log("NO theme in sessionStorage");
-		sessionStorage["theme"] = "dark-theme.css";
-	}
-	
-	current_theme.href = sessionStorage["theme"];
+	console.log("NO favicon in sessionStorage");
+	sessionStorage["favicon"] = "favicon-dark.ico";
+}	
+current_favicon.href = sessionStorage["favicon"];
+
+//check if sessionStorage has theme
+if (typeof(sessionStorage["theme"]) != 'undefined')
+{
+	console.log("GOT theme in sessionStorage");
+	console.log(sessionStorage["theme"]);
 }
+
+else
+{
+	console.log("NO theme in sessionStorage");
+	sessionStorage["theme"] = "dark-theme.css";
+}
+current_theme.href = sessionStorage["theme"];
 
 
 let theme_name = current_theme.getAttribute("href")
