@@ -12,8 +12,8 @@ document.getElementsByTagName("footer")[0].innerHTML = "Created by <b>Loh Jia Ch
 //get webpage width and height (responsive)
 let window_w = window.innerWidth;
 let window_h = window.innerHeight;
-console.log("Window width: ", window_w);
-console.log("Window height: ", window_h);
+//console.log("Window width: ", window_w);
+//console.log("Window height: ", window_h);
 
 window.onresize = showWindowSize;
 function showWindowSize()
@@ -36,13 +36,13 @@ if (current_favicon.getAttribute("href") == "#") //favicon in html not set
 	//check if sessionStorage has favicon
 	if (typeof(sessionStorage["favicon"]) != 'undefined')
 	{
-		console.log("GOT favicon in sessionStorage");
-		console.log(sessionStorage["favicon"]);
+		//console.log("GOT favicon in sessionStorage");
+		//console.log(sessionStorage["favicon"]);
 	}
 	
 	else
 	{
-		console.log("NO favicon in sessionStorage");
+		//console.log("NO favicon in sessionStorage");
 		sessionStorage["favicon"] = "favicon-dark.ico";
 	}
 	
@@ -54,13 +54,13 @@ if (current_theme.getAttribute("href") == "#") //theme in html not set
 	//check if sessionStorage has theme
 	if (typeof(sessionStorage["theme"]) != 'undefined')
 	{
-		console.log("GOT theme in sessionStorage");
-		console.log(sessionStorage["theme"]);
+		//console.log("GOT theme in sessionStorage");
+		//console.log(sessionStorage["theme"]);
 	}
 	
 	else
 	{
-		console.log("NO theme in sessionStorage");
+		//console.log("NO theme in sessionStorage");
 		sessionStorage["theme"] = "dark-theme.css";
 	}
 	
