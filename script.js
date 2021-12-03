@@ -11,7 +11,7 @@ navbar.style.visibility = "hidden";
 
 //get the name of html page, and set the title
 let filename = location.href.split("/").slice(-1)
-console.log(filename)
+//console.log(filename)
 
 //show the projects here
 if(filename == "projects.html")
@@ -24,14 +24,14 @@ if(filename == "projects.html")
 
 	let projects_titles = Array.from(projects_info.keys());
 	let projects_descriptions = Array.from(projects_info.values());
-	console.log(projects_info.keys())
-	console.log(projects_info.size)
+	//console.log(projects_info.keys())
+	//console.log(projects_info.size)
 	
 	let items_per_row = 4;
 	let current_item_index = 0;
 	let total_row = Math.ceil(projects_info.size/items_per_row);
 	let projects_table = document.getElementById("projects-table");
-	console.log("total_row:" + total_row)
+	//console.log("total_row:" + total_row)
 	for (let i=0; i<total_row; i++)
 	{
 		let tr_tag = document.createElement("tr");
@@ -51,6 +51,7 @@ if(filename == "projects.html")
 					
 					let td_image = document.createElement("img");
 					td_image.onerror = function(){td_image.src = "./project_files/no_preview_image.png";};
+					td_image.title = projects_titles[current_item_index];
 					td_image.src = "./project_files/"+projects_titles[current_item_index]+".png";
 					td_image.width = 100;
 					td_image.height = 100;
@@ -84,7 +85,7 @@ if(filename == "projects.html")
 		projects_table.appendChild(tr_tag);
 	}
 	
-	console.log(projects_table);
+	//console.log(projects_table);
 }
 
 if (filename == "index.html")
@@ -102,8 +103,8 @@ document.getElementsByTagName("footer")[0].innerHTML = "Created by <b>Loh Jia Ch
 //get webpage width and height (responsive)
 let window_w = window.innerWidth;
 let window_h = window.innerHeight;
-console.log("Window width: ", window_w);
-console.log("Window height: ", window_h);
+//console.log("Window width: ", window_w);
+//console.log("Window height: ", window_h);
 
 window.onresize = showWindowSize;
 function showWindowSize()
@@ -122,13 +123,13 @@ let toggle_button = document.getElementById("theme-change-button");
 
 if (typeof(sessionStorage["favicon"]) != 'undefined')
 {
-	console.log("GOT favicon in sessionStorage");
-	console.log(sessionStorage["favicon"]);
+	//console.log("GOT favicon in sessionStorage");
+	//console.log(sessionStorage["favicon"]);
 }
 
 else
 {
-	console.log("NO favicon in sessionStorage");
+	//console.log("NO favicon in sessionStorage");
 	sessionStorage["favicon"] = "favicon-dark.ico";
 }	
 current_favicon.href = sessionStorage["favicon"];
@@ -136,13 +137,13 @@ current_favicon.href = sessionStorage["favicon"];
 //check if sessionStorage has theme
 if (typeof(sessionStorage["theme"]) != 'undefined')
 {
-	console.log("GOT theme in sessionStorage");
-	console.log(sessionStorage["theme"]);
+	//console.log("GOT theme in sessionStorage");
+	//console.log(sessionStorage["theme"]);
 }
 
 else
 {
-	console.log("NO theme in sessionStorage");
+	//console.log("NO theme in sessionStorage");
 	sessionStorage["theme"] = "dark-theme.css";
 }
 current_theme.href = sessionStorage["theme"];
