@@ -1,5 +1,8 @@
 ### Hi there 👋
 
+I am a programming enthusiast who knows several programming languages, such as Python, C/C++, HTML&CSS&js.
+
+<a href="https://www.flaticon.com/free-icons/preview" title="preview icons">Preview icons created by Pixel perfect - Flaticon</a>
 <!--
 **LOHJC/LOHJC** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
