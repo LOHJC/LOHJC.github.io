@@ -22,6 +22,68 @@ html {
 	text-align: center;
 }
 
+/*height > width*/
+@media screen and (orientation:portrait) {
+	header {
+		font-size: 7vw;
+	}
+	
+	footer {
+		font-size: 2.5vw;
+	}
+	
+	nav table tr td button{
+		font-size: 3vw;
+	}
+	
+	#content_title {
+		font-size: 5.5vw;
+	}
+	
+	#content_description {
+		font-size: 3.5vw;
+	}
+	
+	#card_description {
+		font-size: 3vw;
+	}
+	
+	#card {
+		height: 60%;
+	}
+}
+
+/*width > height*/
+@media screen and (orientation:landscape) {
+	header {
+		font-size: 7vh;
+	}
+	
+	footer {
+		font-size: 2.5vh;
+	}
+	
+	nav table tr td button{
+		font-size: 3vh;
+	}
+	
+	#content_title {
+		font-size: 5.5vh;
+	}
+	
+	#content_description {
+		font-size: 3.5vh;
+	}
+	
+	#card_description {
+		font-size: 3vh;
+	}
+	
+	#card {
+		height: 100%;
+	}
+}
+
 body {
 	display: grid;
 	height: 100%;	
@@ -54,6 +116,11 @@ nav table {
 	height: 100%;
 	width: 100%;
 	table-layout: fixed;
+}
+
+nav table td {
+	align-items: center;
+	justify-content: center;
 }
 
 nav button {
@@ -172,7 +239,6 @@ nav button:hover {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	height: 100%;
 }
 
 #card_image {
@@ -195,7 +261,6 @@ nav button:hover {
 		transform: translateX(-3%);
 	}
 }
-
 
 @keyframes card_from_right_fade_in {
 	
