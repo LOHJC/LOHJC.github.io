@@ -38,10 +38,12 @@ html {
 	
 	#content_title {
 		font-size: 5.5vw;
+		padding: 0 5.5vw;
 	}
 	
 	#content_description {
 		font-size: 3.5vw;
+		padding: 0 3.5vw;
 	}
 	
 	#card_description {
@@ -69,10 +71,12 @@ html {
 	
 	#content_title {
 		font-size: 5.5vh;
+		padding: 0 5.5vh;
 	}
 	
 	#content_description {
 		font-size: 3.5vh;
+		padding: 0 3.5vh;
 	}
 	
 	#card_description {
