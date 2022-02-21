@@ -129,6 +129,24 @@ let projects_link = ["https://lohjc.github.io/SpaceGen/", "", ""];
 let projects_titles = Array.from(projects_info.keys());
 let projects_descriptions = Array.from(projects_info.values());
 
+//preload the images
+let project_images = [];
+let load_images_index = 0;
+for (let i=0; i<projects_titles.length; i++)
+{
+	project_images.push("./project_files/"+projects_titles[i]+".png");
+}
+project_images.push("./project_files/no_preview_image.png");
+
+let temp_img = new Image();
+temp_img.src = project_images[load_images_index];
+temp_img.onload = () => {
+	if (load_images_index < project_images.length - 1)
+	{
+		load_images_index += 1
+		temp_img.src = project_images[load_images_index];
+	}
+}
 
 function setCardData()
 {
