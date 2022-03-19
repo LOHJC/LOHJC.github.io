@@ -46,10 +46,6 @@ html {
 		padding: 0 3.5vw;
 	}
 	
-	#card_description {
-		font-size: 3vw;
-	}
-	
 	#card {
 		height: 60%;
 	}
@@ -77,10 +73,6 @@ html {
 	#content_description {
 		font-size: 3.5vh;
 		padding: 0 3.5vh;
-	}
-	
-	#card_description {
-		font-size: 3vh;
 	}
 	
 	#card {
@@ -252,6 +244,7 @@ nav button:hover {
 }
 
 #card_description {
+	font-size: 90%;
 	padding: 0 5%;
 }
 
