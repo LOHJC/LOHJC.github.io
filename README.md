@@ -1,4 +1,4 @@
-### Hi there 👋
+## Hi there 👋
 
 I am a programming enthusiast who knows several programming languages, such as Python, C/C++, HTML&CSS&js.
 
