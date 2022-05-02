@@ -23,7 +23,9 @@ let current_project_index = 0;
 projects_info.set("[SpaceGen] The Trail to Mars Can you keep your crew alive","An educational game which targets at 10 – 14 middle schoolers to teach them the risks and hazards faced during human spaceflights.");
 projects_info.set("Water Quality Testing Device by using sensors and image processing techniques","A water quality testing device which uses sensors and camera to obtain the water quality data. The data will then be translated to useful information and saved in the device itself and the cloud storage.");
 projects_info.set("Swiftlet Detection with Computer Vision and Machine Learning (Swiftlet Surveillance System)","A swiftlet detection system by using image processing techniques and support vector machine (SVM). The swiftlet detection system contains a server, several client cameras, and a web-based user interface. ");
-let projects_link = ["https://lohjc.github.io/SpaceGen/", "", ""];
+projects_info.set("TODOLOH","A todo list system where user can create a todo list and upload a current todo list");
+
+let projects_link = ["https://lohjc.github.io/SpaceGen/", "", "", "https://lohjc.github.io/todoloh/"];
 
 let projects_titles = Array.from(projects_info.keys());
 let projects_descriptions = Array.from(projects_info.values());
