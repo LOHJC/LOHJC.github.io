@@ -1,6 +1,6 @@
 ## Hi there 👋
 
-I am a programming enthusiast who knows several programming languages, such as Python, C/C++, HTML&CSS&js.
+I am a passionate programmer fluent in the languages of code and captivated by the wonders of Image Processing, Computer Vision, and Artificial Intelligence. With a diverse skill set in various programming languages, I thrive on transforming ideas into reality and crafting elegant solutions to complex problems. I believe that by leveraging technology, we can address some of the most pressing challenges of our time.
 
 ## Resources
  - <a href="https://redketchup.io/favicon-generator">Redketchup.io</a>
