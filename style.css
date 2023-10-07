@@ -172,6 +172,7 @@ nav button:hover {
 }
 
 #content_description {
+	text-align: justify;
 	color: var(--blue-gray);
 	font-weight: bold;
 	display: flex;
