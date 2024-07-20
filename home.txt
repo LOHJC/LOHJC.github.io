@@ -1,0 +1,9 @@
+Hi there, welcome to my homepage!
+
+Allow me to introduce myself. My name is Loh Jia Chiew, born in 1998 under the Chinese zodiac sign of the tiger. My educational journey has taken me from primary school in Sepang, through secondary school in Seremban, to university studies in Kuching. Like many Malaysians, I am trilingual, fluent in English, Bahasa Malaysia, and Chinese.
+
+Currently, I reside in Penang, where I work as a Reasearch and Development (R&D) Engineer specializing in machine vision systems. My primary focus areas are 3D vision and infrared vision. My responsibilities include conducting feasibility studies, enhancing algorithms, and integrating Artificial Intelligence (AI) solutions into machine vision systems.
+
+In my free time, I am passionate about learning and exploring new technologies, particularly in the field of AI. I enjoy coding to deepen my understanding of these technologies. After my learning process, I often document my work by either committing code publicly or writing articles. Besides my tech interests, I enjoy working out at the gym, sleeping, and playing computer games. These activities help me relax and rejuvenate.
+
+Feel free to explore my public profiles and reach out to me. Hope you have a wonderful day!

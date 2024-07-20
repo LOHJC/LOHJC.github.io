@@ -1,0 +1,44 @@
+{
+    "projects":[
+      {
+         "name":"Running Pace Planner",
+         "description": "It helps users calculate the pace required for each kilometer of running. This project is built by using React (Material-UI and Recharts).",
+         "year": 2023,
+         "image":"./images/rpp.png",
+         "links":["https://lohjc.github.io/running-pace-planner/", "https://github.com/LOHJC/running-pace-planner"],
+         "tags": ["Web development"]
+      },
+      {
+         "name":"todoloh",
+         "description": "todoloh let user to create a todo-list. The created todo-list will be saved into local file with .tdl extension. User can also upload the .tdl file and make changes on it.",
+         "year": 2022,
+         "image":"./images/todoloh.png",
+         "links":["https://lohjc.github.io/todoloh/", "https://github.com/LOHJC/todoloh"],
+         "tags": ["Web development"]
+      },
+      {
+         "name":"SpaceGen | The Trail to Mars: Can you keep your crew alive",
+         "description": "An educational game which targets at 10 – 14 middle schoolers to teach them the risks and hazards faced during human spaceflights.",
+         "year": 2021,
+         "image":"./images/nsac.png",
+         "links":["https://lohjc.github.io/SpaceGen/", "https://github.com/LOHJC/SpaceGen"],
+         "tags": ["Web development", "Game development"]
+      },
+      {
+         "name":"Water Quality Testing Device by using sensors and image processing",
+         "description": "A water quality testing device which uses sensors and camera to obtain the water quality data. The data will then be translated to useful information and saved in the device itself and the cloud storage.",
+         "year": 2021,
+         "image":"./images/fyp.png",
+         "links":["https://youtu.be/U8ukKDLKES4","https://drive.google.com/drive/folders/1BxRH1FQP2Z2mqkeB0_PU4Zmrnq8Dp76_?usp=drive_link"],
+         "tags": ["Embedded System", "Computer Vision", "Image Processing"]
+      },
+      {
+          "name":"Swiftlet Detection with Computer Vision and Machine Learning",
+          "description": "A swiftlet detection system by using image processing techniques and support vector machine (SVM). The swiftlet detection system contains a server, several client cameras, and a web-based user interface.",
+          "year": 2020,
+          "image":"./images/imdc.png",
+          "links": ["https://youtu.be/iTs9JhUZpWo","https://drive.google.com/file/d/1f4BZK0RtdWJDy34Rvr1vnSW10qELNNH2/view?usp=drive_link"],
+          "tags": ["Artificial Intelligence", "Computer Vision", "Image Processing", "Machine Learning"]
+       }
+    ]
+ }

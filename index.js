@@ -1,191 +1,272 @@
 "use strict"
 
 
-function triggerFadeInAnimation(item)
-{
-	item.style.animation = "none";
-	setTimeout( ()=> {
-		item.style.animation = "fade_in_effect 1.5s";
-		item.style.opacity = 1;}, 1);
+let projects = [];
+let selectedTags = []
+
+async function fetchHome() {
+    try {
+        const response = await fetch('home.txt');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const home = await response.text();
+        displayHome(home);
+    } catch (error) {
+        console.error('There has been a problem with your fetch operation:', error);
+    }
 }
 
-function triggerFadeOutAnimation(item)
-{
-	item.style.opacity = 0;
-	item.style.animation = "none";
-	setTimeout( ()=> {item.style.animation = "fade_out_effect 0.01s"}, 1);
+function displayHome(home) {
+    const contentDiv = document.getElementById('home');
+    const lines = home.split('\r\n'); // Split the text by newline
+    lines.forEach(line => {
+		if (line == "")
+			return;
+        const lineElement = document.createElement('p');
+		lineElement.classList.add("text-start");
+        // lineElement.style.textIndent = "5%";
+        // lineElement.style.textAlign = "justify";
+        lineElement.innerText = line;
+        contentDiv.appendChild(lineElement);
+    });
 }
 
-//shows the projects here
-let projects_info = new Map();
-let current_project_index = 0;
+fetchHome();
 
-projects_info.set("[SpaceGen] The Trail to Mars Can you keep your crew alive","An educational game which targets at 10 – 14 middle schoolers to teach them the risks and hazards faced during human spaceflights.");
-projects_info.set("Water Quality Testing Device by using sensors and image processing techniques","A water quality testing device which uses sensors and camera to obtain the water quality data. The data will then be translated to useful information and saved in the device itself and the cloud storage.");
-projects_info.set("Swiftlet Detection with Computer Vision and Machine Learning (Swiftlet Surveillance System)","A swiftlet detection system by using image processing techniques and support vector machine (SVM). The swiftlet detection system contains a server, several client cameras, and a web-based user interface. ");
-projects_info.set("TODOLOH","A todo list system where user can create a todo list and upload a current todo list");
-
-let projects_link = ["https://lohjc.github.io/SpaceGen/", "", "", "https://lohjc.github.io/todoloh/"];
-
-let projects_titles = Array.from(projects_info.keys());
-let projects_descriptions = Array.from(projects_info.values());
-
-//preload the images
-let project_images = [];
-let load_images_index = 0;
-for (let i=0; i<projects_titles.length; i++)
-{
-	project_images.push("./project_files/"+projects_titles[i]+".png");
+async function fetchProjects() {
+    try {
+        const response = await fetch('projects.json');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        projects = data.projects;
+        displayProjects(data.projects);
+    } catch (error) {
+        console.error('There has been a problem with your fetch operation:', error);
+    }
 }
-project_images.push("./project_files/no_preview_image.png");
 
-let temp_img = new Image();
-temp_img.src = project_images[load_images_index];
-temp_img.onload = () => {
-	if (load_images_index < project_images.length - 1)
-	{
-		load_images_index += 1
-		temp_img.src = project_images[load_images_index];
+function displayProjects(projects) {
+    const container = document.getElementById('projects');
+    projects.forEach(project => {
+        const projectCard = createProjectCard(project);
+        container.appendChild(projectCard);
+    });
+}
+
+function getLinkIcon(href, elem) {
+    if (href.includes("drive.google.com")) {
+        elem.classList.add("fa-brands","fa-google-drive");
+
+    } else if (href.includes("youtu.be")) {
+        elem.classList.add("fa-brands","fa-youtube");
+
+    } else if (href.includes("github.com")) {
+        elem.classList.add("fa-brands","fa-github");
+
+    } else if (href.includes("github.io")) {
+        elem.classList.add("fa-solid","fa-file");
+
+    } else {
+        elem.classList.add("fa-solid","fa-link");
+
+    }
+
+    elem.classList.add("mx-1");
+
+}
+
+function createProjectCard(project) {
+
+	const cardContainer = document.createElement('div');
+    cardContainer.classList.add("col-md-4","col-sm-6","mb-3","mt-3");
+
+    const card = document.createElement('div');
+    card.classList.add("card","border-2","pt-3");
+	card.style.height = "100%";
+
+	const img = document.createElement('img');
+	img.classList.add("rounded-3","mx-auto")
+	if (project.image != "")
+		img.src = project.image;
+	else
+		img.src = "./images/no-preview-img.png"
+	img.title = project.name;
+	img.style.width = '80px';
+	img.style.height = '80px';
+
+	const cardBody = document.createElement('div');
+	cardBody.classList.add("card-body");
+
+    const title = document.createElement('div');
+    title.classList.add('card-title',"fw-bold","lh-1","fs-6","m-auto","d-flex","justify-content-center");
+    // title.style.textAlign = "justify";
+    title.innerText = project.name;
+	title.style.height = "50px";
+	title.style.overflow = "auto";
+
+    const year = document.createElement('small');
+    year.classList.add("text-muted");
+    year.innerText = project.year;
+	year.style.fontSize = ".65em";
+	year.style.padding = ".35em .35em";
+    title.appendChild(year);
+
+    const description = document.createElement('div');
+    description.classList.add('card-text',"text-muted","lh-1","border","rounded","px-3","py-1");
+    description.innerHTML = "<small>"+project.description+"</small>";
+    // description.style.textAlign = "justify";
+	description.style.height = "80px";
+	description.style.overflow = "auto";
+
+    const links = document.createElement('div');
+	project.links.forEach(link => {
+        const linkContainer = document.createElement('span');
+        const linkIcon = document.createElement('span');
+        const linkHref = document.createElement('a');
+        getLinkIcon(link,linkIcon);
+        linkHref.href = link;
+        linkHref.target = "_blank";
+        linkHref.rel="noopener noreferrer";
+        linkHref.classList.add("nav-link");
+
+        linkHref.appendChild(linkIcon);
+        linkContainer.appendChild(linkHref);
+        
+        links.appendChild(linkContainer);
+    });
+    links.classList.add("d-flex","justify-content-center","align-items-center")
+	// links.style.height = "50px";
+	links.style.overflow = "auto";
+
+	const tags = document.createElement('span');
+	project.tags.forEach(tag => {
+        const tagBadge = document.createElement('button');
+        tagBadge.name = tag;
+		tagBadge.classList.add("btn","badge","text-bg-secondary","m-1","rounded-pill");
+		tagBadge.innerText = tag;
+        tagBadge.onclick = () => {
+            toggleTag(tag);
+        }
+        tags.appendChild(tagBadge);
+    });
+
+	card.appendChild(img);
+
+    cardBody.appendChild(title);
+    cardBody.appendChild(description);
+	cardBody.appendChild(links);
+	cardBody.appendChild(tags);
+
+	card.appendChild(cardBody);
+
+	cardContainer.appendChild(card);
+
+    return cardContainer;
+}
+
+fetchProjects();
+
+function hideInfo() {
+	const information = document.getElementById("info");
+	const children = information.children;
+	for (let i = 0; i < children.length; i++) {
+		children[i].style.visibility = "hidden";
+		children[i].style.display = "none";
 	}
 }
 
-function setCardData()
-{
-	let card_image = document.getElementById("card_image");
-	let card_description = document.getElementById("card_description");
-	
-	card_image.title = projects_titles[current_project_index];
-	card_image.src = "./project_files/"+projects_titles[current_project_index]+".png";
-	
-	let card_link = projects_link[current_project_index];
-	if (card_link == "")
-		card_link = "./project_files/"+projects_titles[current_project_index]+".html"
-	card_description.innerHTML = "<a target='_blank' href='"+card_link+"'>"+projects_titles[current_project_index]+"</a>\
-	<div>"+projects_descriptions[current_project_index]+"</div>";
+function showHome() {
+	hideInfo();
+	document.getElementById("home").style.visibility = "visible";
+	document.getElementById("home").style.display = "";
 }
 
-function cardLeftPressed()
-{
-	let card = document.getElementById("card");
-	let animation_time = 0.5;//s
-	
-	current_project_index += 1;
-	if (current_project_index >= projects_info.size)
-		current_project_index = 0;
-	
-	card.style.animation = "none";
-	setTimeout( () => {
-		card.style.animation = "card_to_left_fade_out "+animation_time+"s";
-		setTimeout( () => {
-			card.style.animation = "card_from_right_fade_in "+animation_time+"s";
-			setCardData();
-		},1);
-	},1);
+function showProjects() {
+	hideInfo();
+    document.getElementById("projects").innerHTML = "";
+    filterItems();
+    // displayProjects(projects);
+	document.getElementById("projects").style.visibility = "visible";
+	document.getElementById("projects").style.display = "";
 }
 
-function cardRightPressed()
-{
-	let card = document.getElementById("card");
-	let animation_time = 0.5;//s
-	
-	current_project_index -= 1;
-	if (current_project_index < 0)
-		current_project_index = projects_info.size - 1;
-	
-	card.style.animation = "none";
-	setTimeout( () => {
-		card.style.animation = "card_to_right_fade_out "+animation_time+"s";
-		setTimeout( () => {
-			card.style.animation = "card_from_left_fade_in "+animation_time+"s";
-			setCardData();
-		},1);
-	},1);
-	
+function toggleTag(tag) {
+    if (selectedTags.includes(tag)) {
+        clearFilter(tag);
+        selectedTags = selectedTags.filter(t => t !== tag);
+    } else {
+        addFilter(tag);
+        selectedTags.push(tag);
+    }
+    filterItems();
 }
 
-function aboutMe()
-{
-	let title = document.getElementById("content_title");
-	let description = document.getElementById("content_description");
-	
-	triggerFadeOutAnimation(title);
-	triggerFadeOutAnimation(description);
-
-	let content = document.createElement("p");
-	content.style.fontSize = "90%";
-	content.style.margin = "0% 3%";
-	
-	title.innerHTML = "ABOUT ME";
-	description.innerHTML = "";
-	content.innerHTML = "I am a passionate programmer fluent in the languages of code and captivated by the wonders of Image Processing, Computer Vision, and Artificial Intelligence.<br/><br/>\
-	With a diverse skill set in various programming languages, I thrive on transforming ideas into reality and crafting elegant solutions to complex problems. I believe that by leveraging technology, we can address some of the most pressing challenges of our time.";
-	description.appendChild(content);
-
-	triggerFadeInAnimation(title);
-	triggerFadeInAnimation(description);
-	
+function filterItems() {
+    let filteredItems;
+    if (selectedTags.length === 0) {
+        filteredItems = projects;
+        document.getElementById("filter").style.visibility = "hidden";
+        document.getElementById("filter").style.display = "none";
+    }
+    else {
+        filteredItems = projects.filter(project =>
+            selectedTags.every(tag => project.tags.includes(tag))
+        );
+        document.getElementById("filter").style.visibility = "visible";
+        document.getElementById("filter").style.display = "";
+    }
+    
+    document.getElementById("projects").innerHTML = "";
+    displayProjects(filteredItems);
 }
 
-function projects()
-{
-	let title = document.getElementById("content_title");
-	let description = document.getElementById("content_description");
-	
-	triggerFadeOutAnimation(title);
-	triggerFadeOutAnimation(description);
-	
-	title.innerHTML = "PROJECTS";
-	description.innerHTML = "";
-	
-	//create the cards and set the initial project shown
-	let card_content = document.createElement("div");
-	card_content.id = "card_content";
-	let left_arrow = document.createElement("button");
-	left_arrow.innerHTML = "<span><</span>";
-	left_arrow.onclick = () => {cardLeftPressed()};
-	let right_arrow = document.createElement("button");
-	right_arrow.innerHTML = "<span>></span>";
-	right_arrow.onclick = () => {cardRightPressed()};
-	let card = document.createElement("div");
-	card.id = "card";
-	let card_image = document.createElement("img");
-	card_image.id = "card_image";
-	card_image.title = projects_titles[current_project_index];
-	card_image.src = "./project_files/"+projects_titles[current_project_index]+".png";
-	card_image.onerror = () => {card_image.src = "./project_files/no_preview_image.png"};
-	let card_description = document.createElement("div");
-	let card_link = projects_link[current_project_index];
-	if (card_link == "")
-		card_link = "./project_files/"+projects_titles[current_project_index]+".html"
-	card_description.innerHTML = "<a target='_blank' href='"+card_link+"'>"+projects_titles[current_project_index]+"</a>\
-	<div>"+projects_descriptions[current_project_index]+"</div>";
-	card_description.id = "card_description";
-	
-	card.appendChild(card_image);
-	card.appendChild(card_description);
-	
-	card_content.appendChild(left_arrow);
-	card_content.appendChild(card);
-	card_content.appendChild(right_arrow);
-	
-	description.appendChild(card_content);
-	
-	triggerFadeInAnimation(title);
-	triggerFadeInAnimation(description);
+function addFilter(tag) {
+    console.log(selectedTags);
+    if (selectedTags.includes(tag)) {
+        //do nothing
+    } else {
+        //add the tag
+        console.log("adding:",tag)
+        const tagBadgeContainer = document.getElementById("tag-badges")
+        
+        const newTagBadge = document.createElement("span");
+        newTagBadge.classList.add("badge","text-bg-secondary","my-3","mx-1","rounded-pill","position-relative");
+        newTagBadge.id = "tag-"+tag;
+        newTagBadge.innerText = tag;
+
+        const closeButton = document.createElement("button");
+        closeButton.title = "close";
+        closeButton.type = "button";
+        closeButton.classList.add("position-absolute","top-0","start-100","translate-middle","text-bg-danger","border","border-light","rounded-circle","d-flex","justify-content-center","align-items-center");
+        closeButton.style.width = "20px";
+        closeButton.style.height = "20px";
+        closeButton.innerText = "×";
+        closeButton.onclick = () => {
+            clearFilter(tag);
+        };
+        newTagBadge.appendChild(closeButton);
+
+        tagBadgeContainer.appendChild(newTagBadge);
+    }
+
 }
 
-function contacts()
-{
-	let title = document.getElementById("content_title");
-	let description = document.getElementById("content_description");
-	
-	triggerFadeOutAnimation(title);
-	triggerFadeOutAnimation(description);
-	
-	title.innerHTML = "CONTACTS";
-	description.innerHTML = "<div>Email: <a href='mailto:jiachiewloh@gmail.com' target='_blank'>jiachiewloh@gmail.com</a></div>\
-	<div>LinkedIn: <a href='https://www.linkedin.com/in/jia-chiew-loh-287195181/' target='_blank'>Jia Chiew Loh</a></div>";	
-	
-	triggerFadeInAnimation(title);
-	triggerFadeInAnimation(description);
+function clearAllFilter() {
+    selectedTags.forEach(t => clearFilter(t));
+    selectedTags = [];
+    filterItems();
 }
+
+function clearFilter(tag) {
+    if (selectedTags.includes(tag)) {
+        selectedTags = selectedTags.filter(t => t !== tag);
+        document.getElementById("tag-"+tag).remove();
+    }
+    filterItems();
+}
+
+// showHome();
+showProjects();

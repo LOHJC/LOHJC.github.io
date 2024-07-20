@@ -2,10 +2,6 @@
 
 I am a passionate programmer fluent in the languages of code and captivated by the wonders of Image Processing, Computer Vision, and Artificial Intelligence. With a diverse skill set in various programming languages, I thrive on transforming ideas into reality and crafting elegant solutions to complex problems. I believe that by leveraging technology, we can address some of the most pressing challenges of our time.
 
-## Resources
- - <a href="https://redketchup.io/favicon-generator">Redketchup.io</a>
- - <a href="https://www.canva.com/colors/color-palettes/">Canva</a>
- - <a href="https://www.flaticon.com/free-icons/preview">Flaticon</a>
 <!--
 **LOHJC/LOHJC** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
