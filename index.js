@@ -268,5 +268,5 @@ function clearFilter(tag) {
     filterItems();
 }
 
-// showHome();
-showProjects();
+showHome();
+// showProjects();
