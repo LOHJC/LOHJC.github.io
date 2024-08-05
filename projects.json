@@ -1,6 +1,14 @@
 {
     "projects":[
       {
+         "name":"Diet.ai",
+         "description": "Diet.ai is your ultimate companion in achieving your health and wellness goals through customized daily diet recipes. By leveraging advanced artificial intelligence, Diet.ai tailors meal plans that align with your unique nutritional needs and preferences, making healthy eating effortless and enjoyable.",
+         "year": 2024,
+         "image":"./images/dietai.png",
+         "links":["https://gemini-api-competition-c2ceb.web.app/", "https://github.com/LOHJC/gemini-api-competition"],
+         "tags": ["Artificial Intelligence","Web development"]
+      },
+      {
          "name":"Running Pace Planner",
          "description": "It helps users calculate the pace required for each kilometer of running. This project is built by using React (Material-UI and Recharts).",
          "year": 2023,
